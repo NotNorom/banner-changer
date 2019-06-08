@@ -114,6 +114,14 @@ async def setalbum(ctx, url):
 
 
 async def download_album_for_guild(guild_id, url):
+    for file in os.listdir(os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id))):
+        file_path = os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
+
     return ImgurDownloader(url, os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH), file_name=str(guild_id), delete_dne=True).save_images()
 
 
@@ -132,7 +140,10 @@ async def set_random_banner_for_guild(guild_id):
     image_path = os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), image_path)
     guild = bot.get_guild(guild_id)
     with open(image_path, 'rb') as data:
-        await guild.edit(banner=data.read())
+        try:
+            await guild.edit(banner=data.read())
+        except Exception as e:
+            print(e)
 
 
 @tasks.loop(hours=24.0)
