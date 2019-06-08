@@ -146,7 +146,7 @@ async def set_random_banner_for_guild(guild_id):
             print(e)
 
 
-@tasks.loop(hours=24.0)
+@tasks.loop(hours=12.0)
 async def main():
     with open(CSV_NAME, newline='') as f:
         reader = csv.reader(f)
