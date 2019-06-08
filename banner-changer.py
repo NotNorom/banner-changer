@@ -130,8 +130,12 @@ async def set_random_icon_for_guild(guild_id):
     image_path = random.choice([f for f in os.listdir(os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id))) if os.path.isfile(os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), f))])
     image_path = os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), image_path)
     guild = bot.get_guild(guild_id)
+    print("setting image:", image_path, guild_id)
     with open(image_path, 'rb') as data:
-        await guild.edit(icon=data.read())
+        try:
+            await guild.edit(icon=data.read())
+        except Exception as e:
+            print(e)
 
 
 async def set_random_banner_for_guild(guild_id):
@@ -139,6 +143,7 @@ async def set_random_banner_for_guild(guild_id):
     image_path = random.choice([f for f in os.listdir(os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id))) if os.path.isfile(os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), f))])
     image_path = os.path.join(os.path.curdir, IMGUR_DOWNLOAD_PATH, str(guild_id), image_path)
     guild = bot.get_guild(guild_id)
+    print("setting image:", image_path, guild_id)
     with open(image_path, 'rb') as data:
         try:
             await guild.edit(banner=data.read())
