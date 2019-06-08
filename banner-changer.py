@@ -32,8 +32,8 @@ async def setbanner(ctx, url: str):
         return
 
     permissions = ctx.message.author.permissions_in(ctx.channel)
-    if not permissions.administrator and not permissions.manage_guild:
-        print("user is not admin or able to manage guilds")
+    if not permissions.administrator:
+        print("user is not admin")
         return
 
     async with aiohttp.ClientSession() as session:
@@ -60,8 +60,8 @@ async def seticon(ctx, url: str):
         return
 
     permissions = ctx.message.author.permissions_in(ctx.channel)
-    if not permissions.administrator and not permissions.manage_guild:
-        print("user is not admin or able to manage guilds")
+    if not permissions.administrator:
+        print("user is not admin")
         return
 
     async with aiohttp.ClientSession() as session:
@@ -88,8 +88,8 @@ async def setalbum(ctx, url):
         return
 
     permissions = ctx.message.author.permissions_in(ctx.channel)
-    if not permissions.administrator and not permissions.manage_guild:
-        print("user is not admin or able to manage guilds")
+    if not permissions.administrator:
+        print("user is not admin")
         return
 
     mapping = {}
