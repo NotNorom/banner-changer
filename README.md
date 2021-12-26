@@ -1,11 +1,16 @@
-The source code behind `@banner changer #2858`
+# Discontinued
 
-This bot needs the `Manage Server` permission to work.
-Otherwise it can not set the icon or banner.
-Right now only those with the `Administrator` permission can use the commands, this might change in the future.
-Thanks to all the people behind https://github.com/Rapptz/discord.py for such an amazing library! 
+***
 
-Invite the bot using this link: https://discordapp.com/api/oauth2/authorize?client_id=586680217049759744&permissions=32&scope=bot
+This project is discontinued. I have developed a new bot which can found here:
+
+:bangbang: | Please use https://github.com/NotNorom/discord-banner-bot
+:---: | :---
+
+
+***
+
+Old docs:
 
 ## setalbum
 ?setalbum IMGUR_ALBUM_LINK
